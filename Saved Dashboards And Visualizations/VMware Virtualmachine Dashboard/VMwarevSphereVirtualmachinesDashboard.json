@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "85f4a480-02f0-11e9-a6ea-29e66ac30201",
+    "_type": "dashboard",
+    "_source": {
+      "title": "VMware vSphre Virtualmachine Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"gridData\":{\"w\":24,\"h\":15,\"x\":0,\"y\":0,\"i\":\"1\"},\"version\":\"6.4.1\",\"panelIndex\":\"1\",\"type\":\"visualization\",\"id\":\"07d42bb0-02f1-11e9-a6ea-29e66ac30201\",\"embeddableConfig\":{}}]",
+      "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    }
+  }
+]

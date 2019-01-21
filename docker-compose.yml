@@ -1,0 +1,56 @@
+version: '3.2'
+
+services:
+  kibana:
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - "5601:5601"
+    build: './kibana'
+  elasticsearch:
+    container_name: elasticsearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    build: './elastic'
+  logstash:
+    container_name: logstash
+    restart: unless-stopped
+    build: './logstash'
+  redis:
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    build: './redis'
+  proxy:
+    container_name: proxy
+    restart: unless-stopped
+    build: './proxy'
+  filebeat:
+    container_name: filebeat
+    restart: unless-stopped
+    build: './filebeat'
+
+#  UNCOMMENT TO ENABLE METRICBEAT MODULE 
+
+  # metricbeat:
+    # build: './metricbeat'
+
+#  UNCOMMENT TO ENABLE PACKETBEAT MODULE 
+
+  # packetbeat:
+    # build: './packetbeat'
+
+#  UNCOMMENT TO ENABLE AUDITBEAT MODULE 
+
+  # auditbeat:
+    # build: './auditbeat'

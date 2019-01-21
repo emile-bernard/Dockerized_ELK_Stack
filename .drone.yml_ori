@@ -1,0 +1,103 @@
+# kind: pipeline
+# name: default
+# steps:
+# - name: ELK_Stack
+#   image: docker
+#   commands:
+#   - docker-compose up
+#
+# - name: CLI_Tools
+#   image: python
+#   # environment:
+#   #   GOOS: linux
+#   #   GOARCH: amd64
+#   #   GOARCH: amd64
+#   commands:
+#   - python3 tests/test_suite_janitor.py
+#   - python3 tests/test_suite_publisher.py
+
+
+#  pipeline:
+#   # build:
+#   #   image: docker
+#   #   commands:
+#   #     - docker build -t test_container .
+#   deploy:
+#     image: docker/compose
+#     commands:
+#       - docker compose up -d
+
+pipeline:
+  test_scripts:
+    image: python
+    commands:
+      - pip install virtualenv
+      - . venv/bin/activate
+      - python3 cliTools/avdcli_redis_tools/tests/test_suite_janitor.py
+      - python3 cliTools/avdcli_redis_tools/tests/test_suite_publisher.py
+
+services:
+  rvlkib
+    image: hub.avd.../rvlkib
+  rvlredi
+    image: hub.avd.../rvlredis
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.1
+    detach: true
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - "5601:5601"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
+    detach: true
+    container_name: elasticsearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+    ulimits:
+      nofile:
+          soft: 65536
+          hard: 65536
+    volumes:
+      - ${PWD}/elastic/config:${PWD}/usr/share/elasticsearch/config
+  logstash:
+    image: docker.elastic.co/logstash/logstash:6.4.1
+    detach: true
+    container_name: logstash
+    restart: unless-stopped
+    volumes:
+      - ./logstash/config:/usr/share/logstash/config
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+  redis:
+    image: redis
+    detach: true
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    ulimits:
+      nofile:
+          soft: 65536
+          hard: 65536
+    volumes:
+      - ${PWD}/redis:${PWD}/usr/local/etc/redis/
+  proxy:
+    image: docker.elastic.co/logstash/logstash:6.4.1
+    detach: true
+    container_name: proxy
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/proxy/config:${PWD}/usr/share/logstash/config
+      - ${PWD}/proxy/pipeline:${PWD}/usr/share/logstash/pipeline
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:6.4.2
+    detach: true
+    container_name: filebeat
+    restart: unless-stopped
+    # entrypoint: "filebeat -e -strict.perms=false"
+    volumes:
+      - ${PWD}/filebeat/config:${PWD}/usr/share/filebeat
+    commands:
+      - docker run --entrypoint filebeat -e -strict.perms=false

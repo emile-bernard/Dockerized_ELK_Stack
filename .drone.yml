@@ -1,0 +1,19 @@
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: node
+  volumes:
+  - name: cache
+    path: /tmp/cache
+  commands:
+  - pwd
+  - ls /drone
+  - npm install
+  - npm test
+
+volumes:
+- name: cache
+  host:
+    path: /drone/src/cache

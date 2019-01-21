@@ -1,0 +1,6 @@
+# https://github.com/elastic/kibana/blob/master/config/kibana.yml
+server.name: "kibana"
+server.host: "localhost"
+server.port: 5601
+elasticsearch.hosts: ["http://localhost:9200"]
+kibana.index: ".kibana"

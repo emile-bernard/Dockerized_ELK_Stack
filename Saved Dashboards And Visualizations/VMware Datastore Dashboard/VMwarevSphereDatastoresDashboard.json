@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "d19e1cb0-02e4-11e9-9829-03790e859bd1",
+    "_type": "dashboard",
+    "_source": {
+      "title": "VMware vSphere Datastores Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"embeddableConfig\":{},\"gridData\":{\"x\":0,\"y\":0,\"w\":24,\"h\":15,\"i\":\"1\"},\"id\":\"b8578d70-02e6-11e9-9829-03790e859bd1\",\"panelIndex\":\"1\",\"type\":\"visualization\",\"version\":\"6.4.1\"},{\"gridData\":{\"x\":24,\"y\":0,\"w\":24,\"h\":57,\"i\":\"2\"},\"version\":\"6.4.1\",\"panelIndex\":\"2\",\"type\":\"visualization\",\"id\":\"409cd1a0-02eb-11e9-9829-03790e859bd1\",\"embeddableConfig\":{}}]",
+      "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    }
+  }
+]

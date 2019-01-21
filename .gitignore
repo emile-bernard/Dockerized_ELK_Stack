@@ -1,0 +1,4 @@
+filebeat/config/data/
+.vscode
+.env
+template-vsphere-variables.env
