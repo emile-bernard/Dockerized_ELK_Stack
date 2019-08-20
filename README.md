@@ -2,6 +2,34 @@
 
 This project contains a basic docker-compose ELK stack.
 
+## Table of Contents
+* [Contributor covenant code of conduct](#contributor-covenant-code-of-conduct)
+* [Pipeline](#pipeline)
+* [Architecture](#architecture)
+  * [ELK Stack Diagram](#elk-stack-diagram)
+  * [ELK Stack Scripts Diagram](#elk-stack-scripts-diagram)
+  * [Persistant Redis Script Sequence Diagram](#persistant-redis-script-sequence-diagram)
+  * [Persistant Redis Sequence Diagram](#persistant-redis-sequence-diagram)
+ * [Metricbeat vSphere module](#metricbeat-vsphere-module)
+ * [Packetbeat module configuration](#packetbeat-module-configuration)
+ * [Run the stack](#run-the-stack)
+ * [Docker compose](#docker-compose)
+  * [Install and release](#install-and-release)
+  * [Working with containers and images](#working-with-containers-and-images)
+  * [Publish a docker image](#publish-a-docker-image)
+ * [Drone](#drone)
+  * [Drone Docker Flow Diagram](#drone-docker-flow-diagram)
+  * [Drone Docker Hierarchy Diagram](#drone-docker-hierarchy-diagram)
+  * [Drone setup](#drone-setup)
+ * [Common bugs](#common-bugs)
+ * [Tools](#tools)
+ * [Links](#links)
+  * [Drone](#drone)
+  * [Docker](#docker)
+  * [Redis](#redis)
+  * [Beats](#beats)
+  * [Markdown](#markdown)
+
 ## Contributor covenant code of conduct
 
 Please acknowledge our [code of conduct](./CODE_OF_CONDUCT.md).
