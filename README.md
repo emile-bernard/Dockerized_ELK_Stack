@@ -2,7 +2,7 @@
 
 This project contains a basic docker-compose ELK stack.
 
-## Table of Contents
+## Table of contents
 * [Contributor covenant code of conduct](#contributor-covenant-code-of-conduct)
 * [Pipeline](#pipeline)
 * [Architecture](#architecture)
